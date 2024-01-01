@@ -31,6 +31,7 @@ In `[telegram]` section of `settings.ini`:
 3. Set `enabled` to `true`.
 
 Sample of Telegram paging:
+
 ![](img/sysop_pager-telegram.png)
 
 You may get the following error message in you Synchronet BBS after enabling Telegram:
@@ -72,6 +73,7 @@ Do you want paging via PC Speaker but you are running Synchronet BBS from a virt
 2. In `settings.ini`, `[pcspeaker]` section, fill `api_url`, `tone` and set `enabled` to `true`.
 
 Sample of Raspberry Pi paging:
+
 [![Video of a Raspberry Pi playing TON files](https://img.youtube.com/vi/6jjUNOervsY/0.jpg)](https://www.youtube.com/watch?v=6jjUNOervsY)
 
 ### IRC Bot setup
