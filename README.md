@@ -15,7 +15,7 @@ These channels add to the previously existing ones: IRC and email.
 5. Hit enter on the blank line at the bottom to create a new record
 6. Set the `Command Line` to: `?/sbbs/xtrn/sysop_pager/page_sysop.js`
 
-Notice Synchronet BBS will only use **one** external pager from the list in `External Sysop Chat Pagers`. Synchronet will take the list of external pagers as priority order, trying each one. When paging is sucessful with one, it won't use the following ones. For making your pager work, make sure to put the first in the list of pagers or render the other ones inaccesible via Access Requirements.
+Notice Synchronet BBS will only use **one** external pager from the list in `External Sysop Chat Pagers`. Synchronet will take the list of external pagers as priority order, trying each one. When paging is sucessful with one, it won't use the following ones. For making your pager work, make sure to put the first in the pagers list or render the other ones inaccesible via Access Requirements.
 
 ## Configuration
 1. Browse to the `xtrn/sysop_pager/` directory
@@ -23,7 +23,7 @@ Notice Synchronet BBS will only use **one** external pager from the list in `Ext
 3. Edit `settings.ini`
 
 ### Telegram setup
-You can received paging notification via [Telegram Bot API](https://core.telegram.org/bots/api). How to create a Telegram Bot is out of the scope of this documentation, but it is simple and well explained [here](https://core.telegram.org/bots/tutorial).
+You can get paging notifications via [Telegram Bot API](https://core.telegram.org/bots/api). How to create a Telegram Bot is out of the scope of this documentation, but it well explained [here](https://core.telegram.org/bots/tutorial).
 
 In `[telegram]` section of `settings.ini`:
 1. Fill `chat_id` and `token` from your Telegram Bot and channel.
@@ -38,13 +38,13 @@ You may get the following error message in you Synchronet BBS after enabling Tel
 ```
 term TLS WARNING 'Server provided a broken/invalid certificate, try again with a reduced level of certificate compliance checking' (-32) setting attribute 6001
 ```
-_My guess_ is that this could be happening because Synchronet BBS TLS stack, provided by [cryplib](https://cryptlib.com/), is not trusting the certificate chain used by `api.telegram.org`. If this is your case, there is a somewhat dirty workarround that implies proxying Telegram Bot API calls.
+_My guess_ is that this could be happening because Synchronet BBS TLS stack, provided by [cryptlib](https://cryptlib.com/), is not trusting the certificate chain used by `api.telegram.org`. If this is your case, there is a somewhat dirty workarround that implies proxying Telegram Bot API calls.
 
 #### Telegram setup: broken/invalid certificate workarround
 Remember this is a workarround, if you decide to implement it, it is **at your own risk**.
 
 1. Make sure there is no other software in the Synchronet BBS server/virtual machine/container calls `api.telegram.org`.
-2. Edit `/etc/hosts` and `api.telegram.org` to the `127.0.0.1` entry. For example: `127.0.0.1 locahost api.telegram.org`.
+2. Edit `/etc/hosts` and add `api.telegram.org` to the `127.0.0.1` entry. For example: `127.0.0.1 locahost api.telegram.org`.
 3. Install a reverse proxy software, as example I will use [nginx](https://nginx.org/).
 4. Add to `/etc/nginx/sites-available/default` a configuration similar to this one:
 ```
@@ -88,12 +88,12 @@ Sample of Raspberry Pi paging:
 ## Finishing Up
 1. Synchronet will need to recycle the terminal server thread to pick up changes
 2. It may be necessary to restart your BBS
-3. You will need to issue the 'restart' command to your IRC bot
+3. You will need to issue the `restart` command to your IRC bot
 
 ## Using
 Users who page the sysop will be shown a progress/time bar while they wait for you to respond.
 
-You will receive notifications via the configured methods. If using IRC bot, it will notify you in the channel you've configured that somebody is paging you. Respond with the command '!chat n', where 'n' is the node number, to pull the user into IRC chat.
+You will receive notifications via the configured methods. If using IRC bot, it will notify you in the channel you've configured that somebody is paging you. Respond with the command `!chat n`, where `n` is the node number, to pull the user into IRC chat.
 
 ## Notes
 This addon has NOT been extensively tested by echiken or me. USE AT YOUR OWN RISK.
